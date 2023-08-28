@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Vehicles";
+}
+@model IEnumerable<CarNep.Models.Vehicle>
+
+<div class="container py-2">
+    <div class="row">
+        <div class="col-md-4">
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Brand" aria-label="Search">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Category" aria-label="Search">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Filter</button>
+            </form>
+        </div>
+
+        
+    </div>
+    <div class="row gx-0 gy-2 pt-2">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-4 offset-3 offset-sm-0">
+                <div class="card" style="max-width: 18rem;">
+                    <img src="images/cars/@item.Image" class="card-img-top" alt="@item.Make @item.Model">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Make @item.Model</h5>
+                        <a href="#" class="btn btn-warning">Add to Cart</a>
+                        <a href="#" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

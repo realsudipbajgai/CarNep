@@ -1,0 +1,33 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.main-navbar {
+    background:#1D3557;
+    min-height:100px;
+    font-size:1.2em;
+}
+
+.navbar-brand{
+    font-size:1.3em;
+}
+
+/* styling for vehicle index*/
+.vehicle-index-image{
+   
+}
