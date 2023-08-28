@@ -1,0 +1,37 @@
+﻿@model CarNep.Data.ViewModel.VehicleVM
+@{
+    ViewData["Title"] = "Vehicle Detail";
+}
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/cars/@Model.Image" alt="@Model.Make @Model.Model" class="ui-vehicle-details-image"/>
+        </div>
+        <div class="col-md-6">
+            <h1>@Model.Make @Model.Model</h1>
+            <div>
+                <span>Category: </span><span>@Model.Category.Name</span>
+            </div> 
+            <div>
+                <span>Brand: </span><span>@Model.Brand.Name</span>
+            </div>
+            <div>
+                <span>Make: </span><span>@Model.Make</span>
+            </div>
+            <div>
+                <span>Make: </span><span>@Model.Model</span>
+            </div>
+            <div>
+                <span>Price: </span><span>@Model.Price</span>
+            </div>
+            <div>
+                @Model.Description
+            </div>
+            <div class="mt-2">
+                <a href="" class="btn btn-warning">Add to Cart</a>
+                <a href="" class="btn btn-success">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -15,5 +15,11 @@ namespace CarNep.Controllers
         {
             return View(_vehicleServices.GetAll());
         }
+
+        public IActionResult Details(int id)
+        {
+            var vehicle = _vehicleServices.GetById(id);
+            return View(vehicle);
+        }
     }
 }

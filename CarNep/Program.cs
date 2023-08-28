@@ -30,7 +30,7 @@ AddAuthorizationPolicies(builder.Services);
 #region Repos
 builder.Services.AddScoped<IVehicleServices, VehicleServices>();
 #endregion
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

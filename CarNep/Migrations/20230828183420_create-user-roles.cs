@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarNep.Migrations
 {
-    public partial class InitApplicationUser : Migration
+    public partial class createuserroles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

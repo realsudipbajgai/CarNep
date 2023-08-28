@@ -1,19 +1,36 @@
-﻿using CarNep.Data.repo;
+﻿using AutoMapper;
+using CarNep.Data.Helpers;
+using CarNep.Data.repo;
+using CarNep.Data.ViewModel;
 using CarNep.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarNep.Data.services
 {
     public class VehicleServices : IVehicleServices
     {
         private readonly AppDbContext _context;
-        public VehicleServices(AppDbContext context)
+        private readonly IMapper _mapper;
+        public VehicleServices(AppDbContext context, IMapper mapper )
         {
             _context=context;
+            _mapper=mapper;
         }
-        public List<Vehicle> GetAll()
+        public List<VehicleVM> GetAll()
         {
             var vehicles = _context.Vehicles.ToList();
-            return vehicles;
+            var vehicleListVM=_mapper.Map<List<VehicleVM>>(vehicles);
+            return vehicleListVM;
+        }
+
+        public VehicleVM GetById(int id)
+        {
+            var vehicle=_context.Vehicles
+                .Include(v=>v.Brand)
+                .Include(v=>v.Category)
+                .FirstOrDefault(v => v.Id == id);
+            var vehicleVM = _mapper.Map<VehicleVM>(vehicle);
+            return vehicleVM;
         }
     }
 }

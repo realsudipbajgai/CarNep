@@ -56,13 +56,13 @@ namespace CarNep.Data
         {
             var vehicles = new List<Vehicle>
             {
-                new Vehicle { Make = "123",BrandId = 1,CategoryId = 1,Model = "Corolla"},
-                new Vehicle { Make = "abcd",BrandId = 1,CategoryId = 2,Model = "ABCD"},
-                new Vehicle { Make = "123",BrandId = 2,CategoryId = 3,Model = "xyz"},
-                new Vehicle { Make = "1234",BrandId = 3,CategoryId = 4,Model = "hhh"},
-                new Vehicle { Make = "abcd",BrandId = 4,CategoryId = 3,Model = "Centric"},
-                new Vehicle { Make = "123",BrandId = 1,CategoryId = 4,Model = "xyz"},
-                new Vehicle { Make = "1234",BrandId = 4,CategoryId = 4,Model = "hhh"},
+                new Vehicle { Make = "123",BrandId = 1,CategoryId = 1,Model = "Corolla",Price = 10000,Image = "Chevrolet Impala.jpg"},
+                new Vehicle { Make = "abcd",BrandId = 1,CategoryId = 2,Model = "ABCD",Price = 10000,Image = "BMW 3.jpg"},
+                new Vehicle { Make = "123",BrandId = 2,CategoryId = 3,Model = "xyz",Price = 10000,Image = "BMW 3.jpg"},
+                new Vehicle { Make = "1234",BrandId = 3,CategoryId = 4,Model = "hhh",Price = 10000,Image = "BMW 3.jpg"},
+                new Vehicle { Make = "abcd",BrandId = 4,CategoryId = 3,Model = "Centric",Price = 10000,Image = "BMW 3.jpg"},
+                new Vehicle { Make = "123",BrandId = 1,CategoryId = 4,Model = "xyz",Price = 10000,Image = "BMW 3.jpg"},
+                new Vehicle { Make = "1234",BrandId = 4,CategoryId = 4,Model = "hhh",Price = 10000,Image = "BMW 3.jpg"},
             };
             return vehicles;
         }

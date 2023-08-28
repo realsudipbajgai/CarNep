@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarNep.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230825180913_InitApplicationUser")]
-    partial class InitApplicationUser
+    [Migration("20230828183420_create-user-roles")]
+    partial class createuserroles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
