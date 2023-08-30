@@ -28,6 +28,7 @@ body {
 }
 
 /* styling for vehicle index*/
-.vehicle-index-image{
-   
+.ui-vehicle-details-image{
+   max-width:100%;
+   height:auto;
 }
