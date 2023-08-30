@@ -1,6 +1,7 @@
 ﻿using CarNep.Data.Helpers;
 using CarNep.Data.repo;
 using CarNep.Data.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarNep.Controllers
