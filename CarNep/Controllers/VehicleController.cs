@@ -1,4 +1,6 @@
-﻿using CarNep.Data.repo;
+﻿using CarNep.Data.Helpers;
+using CarNep.Data.repo;
+using CarNep.Data.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarNep.Controllers
@@ -20,6 +22,22 @@ namespace CarNep.Controllers
         {
             var vehicle = _vehicleServices.GetById(id);
             return View(vehicle);
+        }
+
+        public IActionResult AddToCart(int id)
+        {
+            //store product info to cart items
+            var vehicle = _vehicleServices.GetById(id);
+            List<CartVM> cart_items = HttpContext.Session.GetJson<List<CartVM>>("cart_items")??new List<CartVM>();
+            CartVM cartVM = new CartVM()
+            {
+                Price = vehicle.Price,
+                ProductName = vehicle.Brand.Name+" "+vehicle.Make + " " + vehicle.Model,
+                Image = vehicle.Image
+            };
+           cart_items.Add(cartVM);
+           HttpContext.Session.SetJson("cart_items",cart_items);
+           return Redirect("/cart");
         }
     }
 }

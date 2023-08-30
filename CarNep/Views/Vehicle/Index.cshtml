@@ -32,7 +32,7 @@
                     <img src="images/cars/@item.Image" class="card-img-top" alt="@item.Make @item.Model">
                     <div class="card-body">
                         <h5 class="card-title">@item.Make @item.Model</h5>
-                        <a href="#" class="btn btn-warning">Add to Cart</a>
+                        <a  class="btn btn-warning" asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a>
                         <a class="btn btn-primary" asp-route-id="@item.Id" asp-action="Details">Details</a>
                     </div>
                 </div>

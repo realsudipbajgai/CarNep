@@ -7,7 +7,7 @@ namespace CarNep.Models
         public int Id { get; set; }
         public string Make { get; set; } = String.Empty;
         public string Model { get; set; } = String.Empty;
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         [Column(TypeName = "Text")]
         public string Description { get; set; }= String.Empty;

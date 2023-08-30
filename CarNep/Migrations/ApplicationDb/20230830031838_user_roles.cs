@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CarNep.Migrations
+namespace CarNep.Migrations.ApplicationDb
 {
-    public partial class createuserroles : Migration
+    public partial class user_roles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

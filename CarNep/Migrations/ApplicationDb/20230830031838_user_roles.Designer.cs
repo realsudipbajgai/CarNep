@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CarNep.Migrations
+namespace CarNep.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230828183420_create-user-roles")]
-    partial class createuserroles
+    [Migration("20230830031838_user_roles")]
+    partial class user_roles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
