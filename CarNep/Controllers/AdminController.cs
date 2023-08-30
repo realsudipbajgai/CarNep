@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarNep.Controllers
 {
-    public class RoleController : Controller
+    public class AdminController : AdminBaseController
     {
-        [Authorize(Policy = "EmployeeOnly")]
         public IActionResult Index()
         {
             return View();
