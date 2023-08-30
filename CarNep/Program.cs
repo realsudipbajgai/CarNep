@@ -1,31 +1,21 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using CarNep.Areas.Identity.Data;
 using CarNep.Data;
 using CarNep.Data.repo;
 using CarNep.Data.services;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<CarNep.Data.AppDbContext>(options =>
+
+builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(connectionString);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-#region Authorization
-
-AddAuthorizationPolicies(builder.Services);
-#endregion
 
 #region Repos
 builder.Services.AddScoped<IVehicleServices, VehicleServices>();
@@ -39,6 +29,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddHealthChecks();
+builder.Services.AddMvc();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,10 +44,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
-
-app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -63,11 +51,3 @@ app.MapRazorPages();
 DBSeeder.Seed(app);
 app.UseSession();
 app.Run();
-
-void AddAuthorizationPolicies(IServiceCollection services)
-{
-    services.AddAuthorization(options =>
-    {
-        options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("EmployeeNumber"));
-    });
-}
