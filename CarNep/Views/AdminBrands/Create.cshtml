@@ -1,0 +1,21 @@
+﻿@model CarNep.Data.ViewModel.BrandVM
+@{
+    ViewData["Title"] = "Brands";
+}
+<div class="container col-md-8 p-2">
+    <h1>Add New Brand</h1>
+    <div>
+        <form method="post" asp-action="Create">
+            <div class="text-danger" asp-validation-summary="All">
+
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Name)
+                <input asp-for="Name" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

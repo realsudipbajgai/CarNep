@@ -37,6 +37,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddControllersWithViews();
 #region Repos
 builder.Services.AddScoped<IVehicleServices, VehicleServices>();
+builder.Services.AddScoped<IBrandsServices, BrandsServices>();
 #endregion
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

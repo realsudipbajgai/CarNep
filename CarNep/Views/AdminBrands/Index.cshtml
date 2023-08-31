@@ -1,7 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<CarNep.Data.ViewModel.BrandVM>
 @{
     Layout = "_Admin_Layout";
+    int i = 1;
 }
-<h1>Admin Brands</h1>
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h1 class="">List of Brands</h1>
+        <a class="btn btn-primary mt-3" asp-action="Create">Add New</a>
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@item.Name</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-route-id="@item.Id" asp-action="Edit">Edit</a>
+                            <a class="btn btn-secondary btn-sm" asp-route-id="@item.Id" asp-action="Details">Details</a>
+                            <a class="btn btn-danger btn-sm" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                    </td>
+                </tr>
+                i++;
+            }
+
+        }
+        else
+        {
+            <tr><td colspan="4">No Data</td></tr>
+        }
+        </tbody>
+    </table>
+</div>
