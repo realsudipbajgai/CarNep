@@ -17,5 +17,22 @@ namespace CarNep.Controllers
             var brands = _brandsServices.GetAll();
             return View(brands);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(BrandVM brand)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(brand);
+            }
+            _brandsServices.AddBrand(brand);
+            return RedirectToAction("Index");
+        }
     }
 }

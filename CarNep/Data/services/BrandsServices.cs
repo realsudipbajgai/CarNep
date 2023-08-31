@@ -19,6 +19,7 @@ namespace CarNep.Data.services
         {
             Brand model = _mapper.Map<Brand>(brand);
             _context.Brands.Add(model);
+            _context.SaveChanges();
         }
 
         public void DeleteBrand(int id)
