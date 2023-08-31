@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Brand Details";
+}
+@model CarNep.Data.ViewModel.BrandVM
+
+<div class="container col-md-8 p-2">
+    <h1>Brand Details</h1>
+    <div>
+        <form>
+            <div class="text-danger" asp-validation-summary="All">
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Name)
+                <input asp-for="Name" class="form-control" disabled="disabled"/>
+            </div>
+            <div class="mb-3">
+                <button asp-action="Index" class="btn btn-primary">Go Back</button>
+            </div>
+        </form>
+    </div>
+</div>

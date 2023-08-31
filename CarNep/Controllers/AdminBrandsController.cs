@@ -34,5 +34,27 @@ namespace CarNep.Controllers
             _brandsServices.AddBrand(brand);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            return View(_brandsServices.GetById(id));
+        }
+
+        [HttpPost]
+        public IActionResult Update(BrandVM brand)
+        {
+            _brandsServices.UpdateBrand(brand);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            return View(_brandsServices.GetById(id));
+        }
+        public IActionResult Delete(int id)
+        {
+            _brandsServices.DeleteBrand(id);
+            return RedirectToAction("Index");
+        }
     }
 }

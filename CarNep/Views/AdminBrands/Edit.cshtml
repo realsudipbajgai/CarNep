@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Edit Brands";
+}
+@model CarNep.Data.ViewModel.BrandVM
+
+<div class="container col-md-8 p-2">
+    <h1>Update Brand</h1>
+    <div>
+        <form method="post" asp-action="Update">
+            <div class="text-danger" asp-validation-summary="All">
+            </div>
+            <div class="mb-3">
+                <input type="hidden" name="Id" value="@Model.Id"/>
+                @Html.LabelFor(m => m.Name)
+                <input asp-for="Name" class="form-control"/>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
