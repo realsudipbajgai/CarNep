@@ -1,19 +1,17 @@
 ﻿using AutoMapper;
-using CarNep.Data.Helpers;
-using CarNep.Data.repo;
-using CarNep.Data.ViewModel;
 using DAL.Data;
-using DAL.Generic_Repositories;
+using DAL.GenericRepo;
 using DAL.Models;
+using DAL.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarNep.Data.services
+namespace DAL.Services
 {
     public class VehicleServices :GenericRepository<Vehicle,int>,IVehicleServices
     {
         private readonly IMapper _mapper;
 
-        public VehicleServices(IMapper mapper,AppDbContext context):base(context)
+        public VehicleServices(AppDbContext context, IMapper mapper) :base(context)
         {
             _mapper=mapper;
         }

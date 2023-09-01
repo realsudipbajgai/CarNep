@@ -1,6 +1,6 @@
 ﻿using CarNep.Data.Helpers;
-using CarNep.Data.repo;
-using CarNep.Data.ViewModel;
+using DAL.Services;
+using DAL.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarNep.Controllers

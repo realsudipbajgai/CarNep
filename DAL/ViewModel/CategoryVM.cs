@@ -1,7 +1,4 @@
-﻿
-using DAL.Models;
-
-namespace CarNep.Data.ViewModel
+﻿namespace DAL.ViewModel
 {
     public class CategoryVM
     {
@@ -9,6 +6,6 @@ namespace CarNep.Data.ViewModel
         public string Name { get; set; } = String.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        public ICollection<Vehicle>? Vehicles { get; set; }
+        public ICollection<VehicleVM>? Vehicles { get; set; }
     }
 }
