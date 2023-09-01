@@ -16,19 +16,19 @@ namespace CarNep.Controllers
         }
         public IActionResult Index()
         {
-            return View(_vehicleServices.GetAll());
+            return View(_vehicleServices.GetAllVehicles());
         }
 
         public IActionResult Details(int id)
         {
-            var vehicle = _vehicleServices.GetById(id);
+            var vehicle = _vehicleServices.GetVehicleById(id);
             return View(vehicle);
         }
 
         public IActionResult AddToCart(int id)
         {
             //store product info to cart items
-            var vehicle = _vehicleServices.GetById(id);
+            var vehicle = _vehicleServices.GetVehicleById(id);
             List<CartVM> cart_items = HttpContext.Session.GetJson<List<CartVM>>("cart_items")??new List<CartVM>();
             CartVM cartVM = new CartVM()
             {

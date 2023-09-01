@@ -1,51 +1,91 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace DAL.Generic_Repositories
 {
-    internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
+    public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
     {
+        private readonly AppDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
+
+        public GenericRepository(AppDbContext context)
+        {
+            _context = context;
+            _dbSet = _context.Set<TEntity>();
+        }
         public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void AddList(List<TEntity> entities)
         {
-            throw new NotImplementedException();
+            foreach (var item in entities )
+            {
+                Add(item);
+            }
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(entity);
+            _dbSet.Remove(entity);
+            _context.SaveChanges();
         }
 
-        public void DeleteList(List<TEntity> entities)
+        public IEnumerable<TEntity> GetAll(Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>> include=null)
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = _dbSet;
+            if (include != null)
+            {
+                query = include(query);
+            }
+            return query.ToList();
         }
 
-        public void Edit(params TEntity[] entities)
+        public TEntity GetById(
+            Expression<Func<TEntity,bool>> filter=null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<TEntity> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public TEntity GetById(int id)
-        {
-            throw new NotImplementedException();
+           IQueryable<TEntity> query = _dbSet;
+           if (filter != null)
+           {
+               query = query.Where(filter);
+           }
+            if (include != null)
+            {
+                query = include(query);
+            }
+            return query.FirstOrDefault();
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dbSet.Attach(entity);
+                _context.Entry(entity).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

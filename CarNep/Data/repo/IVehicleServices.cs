@@ -4,7 +4,7 @@ namespace CarNep.Data.repo
 {
     public interface IVehicleServices
     {
-        List<VehicleVM> GetAll();
-        VehicleVM GetById(int id);
+        List<VehicleVM> GetAllVehicles();
+        VehicleVM GetVehicleById(int id);
     }
 }
