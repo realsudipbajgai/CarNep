@@ -1,20 +1,21 @@
-﻿using CarNep.Data.repo;
-using CarNep.Data.ViewModel;
+﻿using DAL.GenericRepo;
+using DAL.Services;
+using DAL.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarNep.Controllers
 {
     public class AdminBrandsController : AdminBaseController
     {
-        private readonly IBrandsServices _brandsServices;
+        private readonly IUnitOfWork _work;
 
-        public AdminBrandsController(IBrandsServices brandsServices)
+        public AdminBrandsController(IUnitOfWork work)
         {
-            _brandsServices = brandsServices;
+            _work = work;
         }
         public IActionResult Index()
         {
-            var brands = _brandsServices.GetAll();
+            var brands = _work.BrandsServices.GetAllBrands();
             return View(brands);
         }
 
@@ -31,29 +32,32 @@ namespace CarNep.Controllers
             {
                 return View(brand);
             }
-            _brandsServices.AddBrand(brand);
+            _work.BrandsServices.AddBrandInfo(brand);
+            _work.Save();
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            return View(_brandsServices.GetById(id));
+            return View(_work.BrandsServices.GetBrandById(id));
         }
 
         [HttpPost]
         public IActionResult Update(BrandVM brand)
         {
-            _brandsServices.UpdateBrand(brand);
+            _work.BrandsServices.UpdateBrand(brand);
+            _work.Save();
             return RedirectToAction("Index");
         }
 
         public IActionResult Details(int id)
         {
-            return View(_brandsServices.GetById(id));
+            return View(_work.BrandsServices.GetBrandById(id));
         }
         public IActionResult Delete(int id)
         {
-            _brandsServices.DeleteBrand(id);
+            _work.BrandsServices.DeleteBrandInfo(id);
+            _work.Save();
             return RedirectToAction("Index");
         }
     }

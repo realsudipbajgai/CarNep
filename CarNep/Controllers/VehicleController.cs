@@ -1,6 +1,7 @@
 ﻿using CarNep.Data.Helpers;
-using CarNep.Data.repo;
-using CarNep.Data.ViewModel;
+using DAL.GenericRepo;
+using DAL.Services;
+using DAL.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,27 +9,27 @@ namespace CarNep.Controllers
 {
     public class VehicleController : Controller
     {
-        private readonly IVehicleServices _vehicleServices;
+        private readonly IUnitOfWork _work;
 
-        public VehicleController(IVehicleServices vehicleServices)
+        public VehicleController(IUnitOfWork work)
         {
-            _vehicleServices = vehicleServices;
+            _work = work;
         }
         public IActionResult Index()
         {
-            return View(_vehicleServices.GetAllVehicles());
+            return View(_work.VehicleServices.GetAllVehicles());
         }
 
         public IActionResult Details(int id)
         {
-            var vehicle = _vehicleServices.GetVehicleById(id);
+            var vehicle = _work.VehicleServices.GetVehicleById(id);
             return View(vehicle);
         }
 
         public IActionResult AddToCart(int id)
         {
             //store product info to cart items
-            var vehicle = _vehicleServices.GetVehicleById(id);
+            var vehicle = _work.VehicleServices.GetVehicleById(id);
             List<CartVM> cart_items = HttpContext.Session.GetJson<List<CartVM>>("cart_items")??new List<CartVM>();
             CartVM cartVM = new CartVM()
             {

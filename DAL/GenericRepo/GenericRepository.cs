@@ -8,7 +8,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 
-namespace DAL.Generic_Repositories
+namespace DAL.GenericRepo
 {
     public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
     {
@@ -23,14 +23,6 @@ namespace DAL.Generic_Repositories
         public void Add(TEntity entity)
         {
             _dbSet.Add(entity);
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
 
         public void AddList(List<TEntity> entities)
@@ -45,7 +37,6 @@ namespace DAL.Generic_Repositories
         {
             _dbSet.Attach(entity);
             _dbSet.Remove(entity);
-            _context.SaveChanges();
         }
 
         public IEnumerable<TEntity> GetAll(Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>> include=null)
@@ -80,7 +71,6 @@ namespace DAL.Generic_Repositories
             {
                 _dbSet.Attach(entity);
                 _context.Entry(entity).State = EntityState.Modified;
-                _context.SaveChanges();
             }
             catch (Exception ex)
             {

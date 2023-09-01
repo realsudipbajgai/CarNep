@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using CarNep.Data.ViewModel;
 using DAL.Models;
+using DAL.ViewModel;
 
 namespace CarNep.Data.Helpers
 {

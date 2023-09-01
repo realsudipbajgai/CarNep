@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Query;
 
-namespace DAL.Generic_Repositories
+namespace DAL.GenericRepo
 {
     public interface IGenericRepository<TEntity,Tkey> where TEntity:class
     {

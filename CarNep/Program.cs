@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using CarNep.Data.repo;
-using CarNep.Data.services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using DAL.Data;
+using DAL.Services;
+using DAL.GenericRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +36,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 #region Repos
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IVehicleServices, VehicleServices>();
 builder.Services.AddScoped<IBrandsServices, BrandsServices>();
 #endregion

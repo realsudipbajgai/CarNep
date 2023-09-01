@@ -1,4 +1,4 @@
-﻿namespace CarNep.Data.ViewModel
+﻿namespace DAL.ViewModel
 {
     public class CartVM
     {
