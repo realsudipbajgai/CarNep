@@ -1,4 +1,4 @@
-﻿namespace CarNep.Models
+﻿namespace DAL.Models
 {
     public class Category
     {

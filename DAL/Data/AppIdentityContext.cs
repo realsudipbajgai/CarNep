@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarNep.Data;
+namespace DAL.Data;
 
 public class AppIdentityContext : IdentityDbContext<IdentityUser>
 {

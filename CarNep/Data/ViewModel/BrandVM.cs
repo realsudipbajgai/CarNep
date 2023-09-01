@@ -1,4 +1,4 @@
-﻿using CarNep.Models;
+﻿using DAL.Models;
 using Microsoft.Build.Framework;
 
 namespace CarNep.Data.ViewModel

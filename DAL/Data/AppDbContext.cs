@@ -1,11 +1,16 @@
-﻿using CarNep.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL.Models;
 
-namespace CarNep.Data
+namespace DAL.Data
 {
     public class AppDbContext:DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options):base(options){}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -16,7 +21,7 @@ namespace CarNep.Data
             modelBuilder.Entity<Brand>()
                 .HasMany(b => b.Vehicles)
                 .WithOne(v => v.Brand)
-                .HasForeignKey(v=>v.BrandId);
+                .HasForeignKey(v => v.BrandId);
 
 
             modelBuilder.Entity<Category>()

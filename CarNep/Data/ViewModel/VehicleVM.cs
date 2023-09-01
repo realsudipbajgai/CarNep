@@ -1,5 +1,4 @@
-﻿using CarNep.Models;
-
+﻿
 namespace CarNep.Data.ViewModel
 {
     public class VehicleVM

@@ -2,7 +2,7 @@
 using CarNep.Data.Helpers;
 using CarNep.Data.repo;
 using CarNep.Data.ViewModel;
-using CarNep.Models;
+using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarNep.Data.services

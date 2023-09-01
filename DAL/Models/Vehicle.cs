@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarNep.Models
+namespace DAL.Models
 {
     public class Vehicle
     {

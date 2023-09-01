@@ -1,6 +1,6 @@
-﻿using CarNep.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using DAL.Models;
 
 namespace CarNep.Controllers
 {

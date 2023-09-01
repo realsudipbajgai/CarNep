@@ -1,4 +1,5 @@
-﻿using CarNep.Models;
+﻿
+using DAL.Models;
 
 namespace CarNep.Data.ViewModel
 {

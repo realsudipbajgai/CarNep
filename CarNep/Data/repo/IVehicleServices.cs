@@ -1,5 +1,4 @@
 ﻿using CarNep.Data.ViewModel;
-using CarNep.Models;
 
 namespace CarNep.Data.repo
 {

@@ -1,7 +1,10 @@
-﻿using CarNep.Models;
+﻿using DAL.Data;
+using DAL.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace CarNep.Data
+namespace DAL.Data
 {
     public class DBSeeder
     {

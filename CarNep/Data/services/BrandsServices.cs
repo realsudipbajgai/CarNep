@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using CarNep.Data.repo;
 using CarNep.Data.ViewModel;
-using CarNep.Models;
+using DAL.Data;
+using DAL.Models;
 
 namespace CarNep.Data.services
 {
